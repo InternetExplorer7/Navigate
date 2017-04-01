@@ -11,10 +11,11 @@ import {
   Text,
   View,
   TextInput,
-  Button
+  Button,
+  Alert
 } from 'react-native';
 
-import { AppRegistry, TextInput } from 'react-native';
+
 
 export default class LA extends Component {
   constructor() {
@@ -38,7 +39,11 @@ export default class LA extends Component {
     }
   }
 }
-
+const onButtonPress = ()=>
+{
+// what it should do 
+ Alert.alert('Button has been pressed!');
+};
 class ShowInitialView extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +51,7 @@ class ShowInitialView extends Component {
       cb: props.cb,
       currentText: ''
     }
-	 this.state = { text: 'Useless Placeholder' };
+;
   }
 
   render() {
@@ -60,20 +65,43 @@ class ShowInitialView extends Component {
           onChangeText={(text) => this.setState({currentText: text})}
           value={this.state.currentText}
         />
- 	// text input 
-	 <TextInput
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-        onChangeText={(text) => this.setState({text})}
-        value={this.state.text}
-      />
-        <Button
-        onPress={this.state.cb.bind(this.state.currentText)}
-        title="Go!"
+		
+
+
+       <Button
+	onPress={onButtonPress}
+        color= "red"
+	title="Go!"
         />
       </View>
     )
   }
 }
+
+class DestTextInput extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { text: 'Destination' };
+  }
+
+  render() {
+    return (
+      <TextInput
+        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        onChangeText={(text) => this.setState({text})}
+        value={this.state.text}
+      />
+    );
+  }
+}
+
+
+
+
+
+
+
+
 
 class CameraPreview extends Component {
   constructor(props) {
