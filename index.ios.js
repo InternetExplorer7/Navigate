@@ -9,7 +9,9 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput,
+  Button
 } from 'react-native';
 
 export default class LA extends Component {
@@ -19,9 +21,10 @@ export default class LA extends Component {
       showInitialView: true,
       whereTo: ''
     }
+    this.getWhereToLocation = this.getWhereToLocation.bind(this);
   }
   getWhereToLocation(location) {
-    console.log('location: ' + location);
+    alert('location: ' + JSON.stringify(location));
   }
   render() {
     if (this.state.showInitialView) {
@@ -38,7 +41,8 @@ class ShowInitialView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cb: props.cb
+      cb: props.cb,
+      currentText: ''
     }
   }
   render() {
@@ -47,6 +51,15 @@ class ShowInitialView extends Component {
         <Text style={styles.welcome}>
           Where are you trying to go?
         </Text>
+        <TextInput
+          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          onChangeText={(text) => this.setState({currentText: text})}
+          value={this.state.currentText}
+        />
+        <Button
+        onPress={this.state.cb.bind(this.state.currentText)}
+        title="Go!"
+        />
       </View>
     )
   }
@@ -80,7 +93,7 @@ const styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    marginBottom: 70
   },
   instructions: {
     textAlign: 'center',
