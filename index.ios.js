@@ -39,10 +39,6 @@ export default class LA extends Component {
     }
   }
 }
-const onButtonPress = (() => {
-// what it should do 
- alert('THIS FUNCTION SHOULD CHANGE');
-});
 class ShowInitialView extends Component {
   constructor(props) {
     super(props);
