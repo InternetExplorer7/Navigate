@@ -13,12 +13,13 @@ import {
   TextInput,
   Button
 } from 'react-native';
+import Camera from 'react-native-camera';
 
 export default class LA extends Component {
   constructor() {
     super();
     this.state = {
-      showInitialView: true,
+      showInitialView: false,
       whereTo: ''
     }
     this.getWhereToLocation = this.getWhereToLocation.bind(this);
@@ -75,20 +76,33 @@ class CameraPreview extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Enter your location.
-        </Text>
+        <Camera
+        ref={(cam) => {
+          this.camera = cam;
+        }}
+        style={styles.preview}
+        aspect={Camera.constants.Aspect.fill}>
+        <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[SNAP]</Text>
+        </Camera>
       </View>
     )
   }
+
+    takePicture() {
+      const options = {};
+      //options.location = ...
+      this.camera.capture({metadata: options, target: Camera.constants.CaptureTarget.memory})
+        .then((image) => {
+          alert('imageData: ' + image.data.substring(100,190));
+        })
+        .catch(err => alert(err));
+    }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flexDirection: 'row'
   },
   welcome: {
     fontSize: 20,
@@ -100,6 +114,19 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  preview: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
+  capture: {
+    flex: 0,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    color: '#000',
+    padding: 10,
+    margin: 40
+  }
 });
 
 AppRegistry.registerComponent('LA', () => LA);
