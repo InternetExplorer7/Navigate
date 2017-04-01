@@ -13,21 +13,60 @@ import {
 } from 'react-native';
 
 export default class LA extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showInitialView: true,
+      whereTo: ''
+    }
+  }
+  getWhereToLocation(location) {
+    console.log('location: ' + location);
+  }
+  render() {
+    if (this.state.showInitialView) {
+      // Enter location + GO button
+      return <ShowInitialView cb={this.getWhereToLocation}/>
+    } else {
+      // Go to main camera view
+      return <CameraPreview whereTo={this.state.whereTo}/>
+    }
+  }
+}
+
+class ShowInitialView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cb: props.cb
+    }
+  }
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+          Where are you trying to go?
         </Text>
       </View>
-    );
+    )
+  }
+}
+
+class CameraPreview extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      whereToLocationString: props.whereTo
+    }
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Enter your location.
+        </Text>
+      </View>
+    )
   }
 }
 
