@@ -12,6 +12,7 @@ import {
   View,
   TextInput,
   Button,
+  Image
 } from 'react-native';
 import Camera from 'react-native-camera';
 
@@ -50,12 +51,21 @@ class ShowInitialView extends Component {
       currentText: ""
     };
   }
+
   render() {
     return (
 	    <View style={styles.containerInitialView}>
-        <Text style={styles.welcome}>
+         <Image
+          style={{width: 350, height:250}}
+        source={require('/Users/Gyulnara/GitHub/la_hacks_clone/walker2.png')}
+        />
+
+	 <Text style={styles.welcome}>
           Where are you walking to?
         </Text>
+	 
+	 
+
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({currentText: text})}
