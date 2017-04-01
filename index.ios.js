@@ -14,6 +14,8 @@ import {
   Button
 } from 'react-native';
 
+import { AppRegistry, TextInput } from 'react-native';
+
 export default class LA extends Component {
   constructor() {
     super();
@@ -44,18 +46,26 @@ class ShowInitialView extends Component {
       cb: props.cb,
       currentText: ''
     }
+	 this.state = { text: 'Useless Placeholder' };
   }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Where are you trying to go?
+          Where do you want to go ?
         </Text>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({currentText: text})}
           value={this.state.currentText}
         />
+ 	// text input 
+	 <TextInput
+        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        onChangeText={(text) => this.setState({text})}
+        value={this.state.text}
+      />
         <Button
         onPress={this.state.cb.bind(this.state.currentText)}
         title="Go!"
