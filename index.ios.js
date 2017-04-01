@@ -11,9 +11,12 @@ import {
   Text,
   View,
   TextInput,
-  Button
+  Button,
+  Alert
 } from 'react-native';
 import Camera from 'react-native-camera';
+
+
 
 export default class LA extends Component {
   constructor() {
@@ -37,34 +40,70 @@ export default class LA extends Component {
     }
   }
 }
-
+const onButtonPress = ()=>
+{
+// what it should do 
+ Alert.alert('THIS FUNCTION SHOULD CHANGE');
+};
 class ShowInitialView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cb: props.cb,
-      currentText: ''
+      currentText: "destination"
     }
+;
   }
+
   render() {
     return (
-      <View style={styles.container}>
+      
+	<View style={styles.container}>
         <Text style={styles.welcome}>
-          Where are you trying to go?
+          Where are you walking to?
         </Text>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({currentText: text})}
           value={this.state.currentText}
         />
-        <Button
-        onPress={this.state.cb.bind(this.state.currentText)}
-        title="Go!"
+	
+
+
+       <Button
+	onPress={onButtonPress}
+        color= "red"
+	title="Start Walking"
         />
       </View>
     )
   }
 }
+
+class DestTextInput extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { text: 'Destination' };
+  }
+
+  render() {
+    return (
+      <TextInput
+        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        onChangeText={(text) => this.setState({text})}
+        value={this.state.text}
+      />
+    );
+  }
+}
+
+
+
+
+
+
+
+
 
 class CameraPreview extends Component {
   constructor(props) {
