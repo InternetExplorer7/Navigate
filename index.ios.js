@@ -24,15 +24,18 @@ export default class LA extends Component {
       showInitialView: true,
       whereTo: ''
     }
-    this.getWhereToLocation = this.getWhereToLocation.bind(this);
   }
   getWhereToLocation(location) {
-    alert('location: ' + JSON.stringify(location));
+    // location is of type string
+    this.setState({
+      showInitialView: false,
+      whereTo: location
+    })
   }
   render() {
     if (this.state.showInitialView) {
       // Enter location + GO button
-      return <ShowInitialView cb={this.getWhereToLocation}/>
+      return <ShowInitialView cb={this.getWhereToLocation.bind(this)}/>
     } else {
       // Go to main camera view
       return <CameraPreview whereTo={this.state.whereTo}/>
@@ -43,7 +46,7 @@ class ShowInitialView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cb: props.cb,
+      cb: this.props.cb,
       currentText: ""
     };
   }
@@ -59,7 +62,7 @@ class ShowInitialView extends Component {
           value={this.state.currentText}
         />
       <Button
-	        onPress={onButtonPress}
+	        onPress={this.state.cb.bind(this, this.state.currentText)}
           color= "red"
 	        title="Start Walking"
       />
