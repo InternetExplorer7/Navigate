@@ -12,7 +12,6 @@ import {
   View,
   TextInput,
   Button,
-  Alert
 } from 'react-native';
 import Camera from 'react-native-camera';
 
@@ -22,7 +21,7 @@ export default class LA extends Component {
   constructor() {
     super();
     this.state = {
-      showInitialView: false,
+      showInitialView: true,
       whereTo: ''
     }
     this.getWhereToLocation = this.getWhereToLocation.bind(this);
@@ -40,25 +39,21 @@ export default class LA extends Component {
     }
   }
 }
-const onButtonPress = ()=>
-{
+const onButtonPress = (() => {
 // what it should do 
- Alert.alert('THIS FUNCTION SHOULD CHANGE');
-};
+ alert('THIS FUNCTION SHOULD CHANGE');
+});
 class ShowInitialView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cb: props.cb,
-      currentText: "destination"
-    }
-;
+      currentText: ""
+    };
   }
-
   render() {
     return (
-      
-	<View style={styles.container}>
+	    <View style={styles.containerInitialView}>
         <Text style={styles.welcome}>
           Where are you walking to?
         </Text>
@@ -67,43 +62,15 @@ class ShowInitialView extends Component {
           onChangeText={(text) => this.setState({currentText: text})}
           value={this.state.currentText}
         />
-	
-
-
-       <Button
-	onPress={onButtonPress}
-        color= "red"
-	title="Start Walking"
-        />
+      <Button
+	        onPress={onButtonPress}
+          color= "red"
+	        title="Start Walking"
+      />
       </View>
     )
   }
 }
-
-class DestTextInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: 'Destination' };
-  }
-
-  render() {
-    return (
-      <TextInput
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-        onChangeText={(text) => this.setState({text})}
-        value={this.state.text}
-      />
-    );
-  }
-}
-
-
-
-
-
-
-
-
 
 class CameraPreview extends Component {
   constructor(props) {
@@ -142,6 +109,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row'
+  },
+  containerInitialView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
