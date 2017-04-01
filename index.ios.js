@@ -42,36 +42,37 @@ export default class LA extends Component {
 const onButtonPress = ()=>
 {
 // what it should do 
- Alert.alert('Button has been pressed!');
+ Alert.alert('THIS FUNCTION SHOULD CHANGE');
 };
 class ShowInitialView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cb: props.cb,
-      currentText: ''
+      currentText: "destination"
     }
 ;
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      
+	<View style={styles.container}>
         <Text style={styles.welcome}>
-          Where do you want to go ?
+          Where are you walking to?
         </Text>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({currentText: text})}
           value={this.state.currentText}
         />
-		
+	
 
 
        <Button
 	onPress={onButtonPress}
         color= "red"
-	title="Go!"
+	title="Start Walking"
         />
       </View>
     )
