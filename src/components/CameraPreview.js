@@ -50,11 +50,18 @@ export default class CameraPreview extends Component {
                   return response.json();
               }).then((responseJson) => {
                   // The JSON response.
-                  alert('response: ' + responseJson);
+                  var stairsOrHallway = responseJson.Result;
+                  if (stairsOrHallway === '\"A\"') {
+                    alert('stairs detected')
+                  } else if (stairsOrHallway === '\"B\"') {
+                    alert('hallway detected')
+                  } else {
+                    alert('response: ' + stairsOrHallway);
+                  }
               })
       })
       .catch(err => alert(err));
-}
+    }
 }
 
 const styles = StyleSheet.create({
