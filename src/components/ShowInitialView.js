@@ -7,7 +7,9 @@ import {
   View,
   TextInput,
   Button,
-  Image
+  Image,
+  TouchableOpacity,
+  KeyboardAvoidingView
 } from 'react-native';
 
 export default class ShowInitialView extends Component {
@@ -21,24 +23,29 @@ export default class ShowInitialView extends Component {
 
   render() {
     return (
-	    <View style={styles.containerInitialView}>
+	    <KeyboardAvoidingView behavior="padding" style={styles.containerInitialView}>
+        <View style={styles.logoContainer}>
         <Image
+          style={styles.logo}
           source={require('../assets/walker2.png')}
         />
-	      <Text style={styles.welcome}>
-          Where are you walking to?
-        </Text>
+        </View>
+        <View style={styles.inputContainer}>
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({currentText: text})}
           value={this.state.currentText}
+          style={styles.input}
+          placeholder="Where are you walking to?"
         />
-        <Button
+        <TouchableOpacity
 	        onPress={this.state.cb.bind(this, this.state.currentText)}
           color= "black"
 	        title="Start Walking"
-        />
-      </View>
+          style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>NAVIGATE</Text>
+        </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -46,18 +53,36 @@ export default class ShowInitialView extends Component {
 const styles = StyleSheet.create({
   containerInitialView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F7FBFF',
-    borderLeftWidth: 5,
-    borderRightWidth: 5,
-    borderBottomWidth: 5,
-    borderTopWidth: 5,
+    borderWidth: 5,
     borderColor: 'black'
   },
-  welcome: {
-    fontSize: 20,
+  logoContainer: {
+    alignItems: 'center',
+    flexGrow: 1,
+    justifyContent: 'center'
+  },
+  logo: {
+    height: 200,
+    width: 300
+  },
+  inputContainer: {
+    padding: 20
+  },
+  input: {
+    height: 50,
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    marginBottom: 20,
+    paddingHorizontal: 10
+  },
+  buttonText: {
     textAlign: 'center',
-    marginBottom: 70
+    fontWeight: '700',
+    color: "#FFFFFF"
+  },
+  buttonContainer: {
+    backgroundColor: '#3b3b3b',
+    paddingVertical: 15,
+    borderRadius: 10
   }
 });

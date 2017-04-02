@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {View} from 'react-native';
 import ShowInitialView from './ShowInitialView';
 import CameraPreview from './CameraPreview';
-import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 console.disableYellowBox = true;
 
@@ -26,11 +25,6 @@ export default class LA extends Component {
     if (!this.state.showInitialView) {
       view = <CameraPreview whereTo={this.state.whereTo}/>
     }
-    return (
-      <View>
-        {view}
-        <KeyboardSpacer/>
-      </View>
-    )
+    return view
   }
 }
