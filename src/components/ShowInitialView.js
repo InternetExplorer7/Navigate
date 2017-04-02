@@ -23,16 +23,11 @@ export default class ShowInitialView extends Component {
     return (
 	    <View style={styles.containerInitialView}>
         <Image
-          style={{width: 400, height:250}}
           source={require('../assets/walker2.png')}
         />
-
 	      <Text style={styles.welcome}>
           Where are you walking to?
         </Text>
-
-
-
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({currentText: text})}

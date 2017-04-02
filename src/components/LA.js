@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import {View} from 'react-native';
 import ShowInitialView from './ShowInitialView';
 import CameraPreview from './CameraPreview';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 export default class LA extends Component {
   constructor() {
@@ -18,12 +20,15 @@ export default class LA extends Component {
     })
   }
   render() {
-    if (this.state.showInitialView) {
-      // Enter location + GO button
-      return <ShowInitialView cb={this.getWhereToLocation.bind(this)}/>
-    } else {
-      // Go to main camera view
-      return <CameraPreview whereTo={this.state.whereTo}/>
+    var view = <ShowInitialView cb={this.getWhereToLocation.bind(this)}/>
+    if (!this.state.showInitialView) {
+      view = <CameraPreview whereTo={this.state.whereTo}/>
     }
+    return (
+      <View>
+        {view}
+        <KeyboardSpacer/>
+      </View>
+    )
   }
 }
