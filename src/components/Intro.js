@@ -15,9 +15,9 @@ export default class Intro extends Component {
       return (
         <Onboarding
           pages={[
-            { backgroundColor: '#1060fe', image: <Image source={require('../assets/walker.png')} style={{width: 50, height: 50}}/>, title: 'Simple Messenger UI', subtitle: 'Implemented in React Native' },
-            { backgroundColor: "#fe6e58", image: <Image source={require('../assets/walker.png')} style={{width: 50, height: 50}}/>, title: 'Welcome', subtitle: 'To Earth' },
-            { backgroundColor: "#999", image: <Image source={require('../assets/walker.png')} style={{width: 50, height: 50}}/>, title: 'Also', subtitle: 'Mars is nice' },
+            { backgroundColor: '#fff', image: <Image source={require('../assets/walker.png')} style={{width: 200, height: 200}}/>, title: 'Navigate', subtitle: 'Walking Directions Reinvented' },
+            { backgroundColor: "#fff", image: <Image source={require('../assets/map.png')} style={{width: 250, height: 200}}/>, title: 'Direct', subtitle: 'Enter a location to walk to' },
+            { backgroundColor: "#fff", image: <Image source={require('../assets/AR.png')} style={{width: 125, height: 200}}/>, title: 'View', subtitle: 'View directions in Augmented Reality' },
           ]}
           onEnd={() => this.setState({ completedOnboarding: true })}
         />
