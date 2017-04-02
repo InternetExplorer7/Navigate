@@ -56,7 +56,7 @@ class ShowInitialView extends Component {
     return (
 	    <View style={styles.containerInitialView}>
          <Image
-          style={{width: 350, height:250}}
+          style={{width: 400, height:250}}
         source={require('/Users/Gyulnara/GitHub/la_hacks_clone/walker2.png')}
         />
 
@@ -73,7 +73,7 @@ class ShowInitialView extends Component {
         />
       <Button
 	        onPress={this.state.cb.bind(this, this.state.currentText)}
-          color= "red"
+          color= "black"
 	        title="Start Walking"
       />
       </View>
@@ -123,7 +123,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F7FBFF',
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderBottomWidth: 5,	
+    borderTopWidth: 5, 
+   borderColor: 'black'
+
+
+
   },
   welcome: {
     fontSize: 20,
