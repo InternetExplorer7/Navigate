@@ -55,31 +55,7 @@ export default class ShowInitialView extends Component {
           key: googleApiKey,
           language: 'en' // language of the results
         }}
-        styles={{
-    textInputContainer: {
-      backgroundColor: 'rgba(0,0,0,0)',
-      borderTopWidth: 0,
-      borderBottomWidth:0,
-      paddingHorizontal: 5
-    },
-    textInput: {
-      marginLeft: 0,
-      marginRight: 0,
-      height: 40,
-      color: '#5d5d5d',
-      fontSize: 16,
-      shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowRadius: 5,
-    shadowOpacity: 0.5
-    },
-    predefinedPlacesDescription: {
-      color: '#1faadb'
-    },
-  }}
+        styles={inputStyles}
         nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
         GoogleReverseGeocodingQuery={{
           // available options for GoogleReverseGeocoding API : https://developers.google.com/maps/documentation/geocoding/intro
@@ -91,12 +67,35 @@ export default class ShowInitialView extends Component {
         }}
 
         debounce={200} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
-      />
+        />
         </View>
       </KeyboardAvoidingView>
     )
   }
 }
+
+const inputStyles = StyleSheet.create({
+  textInputContainer: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    borderTopWidth: 0,
+    borderBottomWidth:0,
+    paddingHorizontal: 5
+  },
+  textInput: {
+    marginLeft: 0,
+    marginRight: 0,
+    height: 40,
+    color: '#5d5d5d',
+    fontSize: 16,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 5,
+    shadowOpacity: 0.5
+  }
+});
 
 const styles = StyleSheet.create({
   containerInitialView: {
