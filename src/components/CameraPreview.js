@@ -28,15 +28,33 @@ export default class CameraPreview extends Component {
     )
   }
 
-    takePicture() {
-      const options = {};
-      //options.location = ...
-      this.camera.capture({metadata: options, target: Camera.constants.CaptureTarget.memory})
-        .then((image) => {
-          alert('imageData: ' + image.data.substring(100,190));
-        })
-        .catch(err => alert(err));
-    }
+  takePicture() {
+  const options = {};
+  //options.location = ...
+  this.camera.capture({
+          metadata: options,
+          target: Camera.constants.CaptureTarget.memory
+      })
+      .then((image) => {
+          fetch('https://e63e723e.ngrok.io/find/blue', {
+                  method: 'POST',
+                  headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                      base64Image: image.data
+                  })
+              })
+              .then((response) => {
+                  return response.json();
+              }).then((responseJson) => {
+                  // The JSON response.
+                  alert('response: ' + responseJson);
+              })
+      })
+      .catch(err => alert(err));
+}
 }
 
 const styles = StyleSheet.create({

@@ -22,12 +22,12 @@ export default class ShowInitialView extends Component {
   render() {
     return (
 	    <View style={styles.containerInitialView}>
-         <Image
+        <Image
           style={{width: 400, height:250}}
-        source={require('../assets/walker2.png')}
+          source={require('../assets/walker2.png')}
         />
 
-	 <Text style={styles.welcome}>
+	      <Text style={styles.welcome}>
           Where are you walking to?
         </Text>
 
@@ -38,11 +38,11 @@ export default class ShowInitialView extends Component {
           onChangeText={(text) => this.setState({currentText: text})}
           value={this.state.currentText}
         />
-      <Button
+        <Button
 	        onPress={this.state.cb.bind(this, this.state.currentText)}
           color= "black"
 	        title="Start Walking"
-      />
+        />
       </View>
     )
   }
