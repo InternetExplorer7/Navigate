@@ -6,6 +6,6 @@
 
 import React from 'react';
 import { AppRegistry } from 'react-native';
-import LA from './src/components/LA';
+import Intro from './src/components/Intro';
 
-AppRegistry.registerComponent('LA', () => LA);
+AppRegistry.registerComponent('LA', () => Intro);

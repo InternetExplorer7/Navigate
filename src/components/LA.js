@@ -4,6 +4,8 @@ import ShowInitialView from './ShowInitialView';
 import CameraPreview from './CameraPreview';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 
+console.disableYellowBox = true;
+
 export default class LA extends Component {
   constructor() {
     super();
