@@ -57,7 +57,7 @@ class ShowInitialView extends Component {
 	    <View style={styles.containerInitialView}>
          <Image
           style={{width: 400, height:250}}
-        source={require('/Users/Gyulnara/GitHub/la_hacks_clone/walker2.png')}
+        source={require('./walker2.png')}
         />
 
 	 <Text style={styles.welcome}>
