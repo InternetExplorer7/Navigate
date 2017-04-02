@@ -33,6 +33,7 @@ export default class ShowInitialView extends Component {
           style={styles.logo}
           source={require('../assets/icon.png')}
         />
+        <Text style={styles.title}>Footsteps</Text>
         <Text style={styles.description}>Walking. Reinvented.</Text>
         </View>
         <View style={styles.inputContainer}>
@@ -110,6 +111,11 @@ const styles = StyleSheet.create({
   logo: {
     height: 150,
     width: 200
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: '700',
+    marginBottom: 20
   },
   description: {
     fontSize: 16,
